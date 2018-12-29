@@ -39,6 +39,41 @@ const TOGGLE_TODO = 'TOGGLE_TODO';
 const ADD_GOAL = 'ADD_GOAL';
 const REMOVE_GOAL = 'REMOVE_GOAL';
 
+//action creators
+
+function addTodo(todo) {
+    return {
+        type : ADD_TODO,
+        todo
+    }
+}
+function removeTodo(id) {
+    return {
+        type: REMOVE_TODO,
+        id
+    }
+}
+function toggleTodo(id) {
+    return {
+        type: TOGGLE_TODO,
+        id
+    }
+}
+
+
+function addGoal(goal) {
+    return {
+        type : ADD_GOAL,
+        goal
+    }
+}
+function removeGoal(id) {
+    return {
+        type: REMOVE_GOAL,
+        id
+    }
+}
+
 function todo(state = [], action) {
   switch (action.type) {
       case ADD_TODO :
@@ -86,11 +121,31 @@ store.subscribe(showState);
 const unsubscribe = store.subscribe(showChange);
 unsubscribe();
 
-store.dispatch({
-    type: ADD_TODO,
-    todo: {
-        id : 0,
-        name: "Learn Redux",
-        complete: false
-    }});
+store.dispatch(addTodo({
+    id : 1,
+    name: "Was the car",
+    complete: false
+}));
+store.dispatch(addTodo({
+    id : 2,
+    name: "Go out with Radu",
+    complete: false
+}));
+store.dispatch(addTodo({
+    id : 3,
+    name: "Go to shopping",
+    complete: false
+}));
+store.dispatch(removeTodo(2));
+store.dispatch(toggleTodo(3));
 
+store.dispatch(addGoal({
+    id : 1,
+    name : 'Learn Redux'
+}));
+
+store.dispatch(addGoal({
+    id : 1,
+    name : 'Learn JavaScript'
+}));
+store.dispatch(removeGoal(2));
