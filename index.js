@@ -34,14 +34,15 @@ function createStore (reducer) {
 //App Code
 
 function todos(state = [], action) {
-  if ( action.type === 'ADD_TODO' ){
-    return state.concat([action.todo]);
-  } else if ( action.type === 'REMOVE_TODO' ){
-    return state.filter( todo => (todo.id !== action.id))
-  } else if (action.type === 'TOGGLE_TODO' ){
-    return map.state(todo => todo.id !== action.id ? todo : Object.assign({}, todo, {complete: !todo.complete}))
-  }else{
-      return state;
+  switch (action.type) {
+      case 'ADD_TODO':
+          return state.concat([action.todo]);
+      case 'REMOVE_TODO':
+          return state.filter( todo => (todo.id !== action.id));
+      case 'TOGGLE_TODO':
+          return map.state(todo => todo.id !== action.id ? todo : Object.assign({}, todo, {complete: !todo.complete}));
+      default:
+          return state;
   }
 }
 
