@@ -1,4 +1,5 @@
-function createStore () {
+// Library Code
+function createStore (reducer) {
   // The store should have four parts
   // 1. The state
   // 2. Get the state.
@@ -17,13 +18,30 @@ function createStore () {
     }
   };
 
+  const dispatch = (action) => {
+    state = reducer(state, action);
+    listeners.forEach(listener => listener());
+  };
+
   return {
     getState,
-    subscribe
+    subscribe,
+    dispatch
   }
 }
 
-const store = createStore();
+
+//App Code
+
+function todos(state = [], action) {
+  if ( action.type === 'ADD_TODO'){
+    return state.concat([action.todo]);
+  }
+
+  return state;
+}
+
+const store = createStore(todos);
 let showState = () => {
     console.log("******Listen for changes : ", store.getState());
 };
@@ -34,3 +52,4 @@ store.subscribe(showState);
 
 const unsubscribe = store.subscribe(showChange);
 unsubscribe();
+
