@@ -57,7 +57,18 @@ function goals(state = [], action){
     }
 }
 
-const store = createStore(todos);
+function app( state = {}, action) {
+    return {
+        todos: todo(state.todos, action),
+        goals: goal(state.goals, action)
+    }
+}
+
+/*
+Passing the root reducer to our store since our createStore function can only take one reducer.
+*/
+const store = createStore(app);
+
 let showState = () => {
     console.log("******Listen for changes : ", store.getState());
 };
