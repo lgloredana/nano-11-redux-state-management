@@ -6,3 +6,10 @@ The main point targeted here are:
 * listening to changes of the state
 * updating the state
 
+# Runing the application
+ - Open index.html in browser.
+ - Open debugger tools  - console
+ - In the console appears all the state changes
+ 
+ 
+ ![ScreenShot](img/console-screen.png)
