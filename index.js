@@ -121,31 +121,42 @@ store.subscribe(showState);
 const unsubscribe = store.subscribe(showChange);
 unsubscribe();
 
+console.log('--- add TODO');
 store.dispatch(addTodo({
     id : 1,
     name: "Was the car",
     complete: false
 }));
+console.log('--- add TODO');
 store.dispatch(addTodo({
     id : 2,
     name: "Go out with Radu",
     complete: false
 }));
+console.log('--- add TODO');
 store.dispatch(addTodo({
     id : 3,
     name: "Go to shopping",
     complete: false
 }));
+
+console.log('--- remove TODO');
 store.dispatch(removeTodo(2));
+
+console.log('--- toggle TODO');
 store.dispatch(toggleTodo(3));
 
+console.log('--- add GOAL');
 store.dispatch(addGoal({
     id : 1,
     name : 'Learn Redux'
 }));
 
+console.log('--- add GOAL');
 store.dispatch(addGoal({
-    id : 1,
+    id : 2,
     name : 'Learn JavaScript'
 }));
+
+console.log('--- remove GOAL');
 store.dispatch(removeGoal(2));
