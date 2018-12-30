@@ -81,7 +81,7 @@ function todo(state = [], action) {
       case REMOVE_TODO :
           return state.filter( todo => (todo.id !== action.id));
       case TOGGLE_TODO :
-          return map.state(todo => todo.id !== action.id ? todo : Object.assign({}, todo, {complete: !todo.complete}));
+          return state.map(todo => todo.id !== action.id ? todo : Object.assign({}, todo, {complete: !todo.complete}));
       default :
           return state;
   }
